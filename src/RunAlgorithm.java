@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class RunAlgorithm {
 
-    private static final String[] ALGORITHM_LIST = {"merge", "quick", "insertion"};
+    private static final String[] ALGORITHM_LIST = {"merge", "quick", "insertion", "bubble"};
 
     public static void main(String[] args) {
 
@@ -27,6 +27,14 @@ public class RunAlgorithm {
         } else if (algChoice.equalsIgnoreCase("insertion")) {
             InsertionSort insertionSort = new InsertionSort();
             insertionSort.run(arraySize);
+
+        } else if (algChoice.equalsIgnoreCase("bubble")) {
+            BubbleSort bubbleSort = new BubbleSort();
+            bubbleSort.run(arraySize);
+
+        } else if (algChoice.equalsIgnoreCase("bogo")) {
+            BogoSort bogoSort = new BogoSort();
+            bogoSort.run();
 
         } else {
             System.out.println("fuck you");
