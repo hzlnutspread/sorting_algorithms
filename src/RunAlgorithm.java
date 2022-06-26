@@ -34,7 +34,7 @@ public class RunAlgorithm {
 
         } else if (algChoice.equalsIgnoreCase("bogo")) {
             BogoSort bogoSort = new BogoSort();
-            bogoSort.run();
+            bogoSort.run(arraySize);
 
         } else {
             System.out.println("fuck you");

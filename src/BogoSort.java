@@ -2,17 +2,17 @@ import java.util.Random;
 
 public class BogoSort {
 
-    public void run() {
+    public void run(int size) {
 
-        generateArray();
+        int[] array = generateArray(size);
 
-        bogoSort(generateArray());
+        bogoSort(array);
 
     }
 
-    private int[] generateArray() {
+    private int[] generateArray(int size) {
         Random rand = new Random();
-        int[] array = new int[3];
+        int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
             array[i] = rand.nextInt(100);
         }
@@ -21,11 +21,11 @@ public class BogoSort {
 
     private void bogoSort(int[] array) {
         if (!isListSorted(array)) {
-            generateArray();
+            int[] newArray = generateArray(array.length);
             System.out.println("Before: ");
-            printArray(generateArray());
+            printArray(newArray);
             System.out.println("\n");
-            bogoSort(generateArray());
+            bogoSort(newArray);
 
         } else if (isListSorted(array)) {
             System.out.println("\nAfter: ");
