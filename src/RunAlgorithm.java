@@ -8,46 +8,47 @@ public class RunAlgorithm {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Which alg do you want to run?: " + String.join(", ", ALGORITHM_LIST) + "?: ");
-        String algChoice = scanner.nextLine().trim();
+        System.out.println("Which alg do you want to sort? " + String.join(", ", ALGORITHM_LIST) + "?: ");
+        String algChoice = scanner.nextLine().trim().toLowerCase();
 
         System.out.println("What size array do you want to sort?: ");
         int arraySize = scanner.nextInt();
 
         final long startTime = System.currentTimeMillis();
 
-        if (algChoice.equalsIgnoreCase("merge")) {
-            MergeSort mergeSort = new MergeSort();
-            mergeSort.run(arraySize);
+        AlgorithmName algorithmName = AlgorithmName.fromValue(algChoice);
+        SortingAlgorithm algorithm = null;
 
-        } else if (algChoice.equalsIgnoreCase("quick")) {
-            QuickSort quickSort = new QuickSort();
-            quickSort.run(arraySize);
-
-        } else if (algChoice.equalsIgnoreCase("insertion")) {
-            InsertionSort insertionSort = new InsertionSort();
-            insertionSort.run(arraySize);
-
-        } else if (algChoice.equalsIgnoreCase("bubble")) {
-            BubbleSort bubbleSort = new BubbleSort();
-            bubbleSort.run(arraySize);
-
-        } else if (algChoice.equalsIgnoreCase("bogo")) {
-            BogoSort bogoSort = new BogoSort();
-            bogoSort.run(arraySize);
-
-        } else {
-            System.out.println("fuck you");
+        switch (algorithmName) {
+            case BOGO:
+                algorithm = new BogoSort();
+                break;
+            case BUBBLE:
+                algorithm = new BubbleSort();
+                break;
+            case INSERTION:
+                algorithm = new InsertionSort();
+                break;
+            case MERGE:
+                algorithm = new MergeSort();
+                break;
+            case QUICK:
+                algorithm = new QuickSort();
+                break;
+            default:
+                System.out.println("Fuck you");
         }
 
-        final long endTime = System.currentTimeMillis();
-        System.out.println("\nTime taken: " + (endTime - startTime) + "ms");
+        if (algorithm != null) {
+            int[] array = ArrayUtils.generate(arraySize);
+            algorithm.sort(array);
 
+            final long endTime = System.currentTimeMillis();
+            System.out.println("\nTime taken: " + (endTime - startTime) + "ms");
+        }
     }
-
+}
 
 //    private static String customJoin(String delimiter, String[] words) {
 //        return;
 //    }
-
-}

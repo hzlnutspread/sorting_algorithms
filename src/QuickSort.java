@@ -1,29 +1,19 @@
 import java.util.Random;
 
-public class QuickSort {
+public class QuickSort implements SortingAlgorithm{
 
-    public void run(int size) {
-
-        // initialise the array of 10 numbers
-        Random rand = new Random();
-        int[] numbers = new int[size];
-
-        // generate the random array of 10 integers
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(100);
-        }
-
+    @Override
+    public void sort(int[] array) {
         // print out the unsorted array
         System.out.print("Unsorted array: ");
-        printArray(numbers);
+        ArrayUtils.printArray(array);
 
         // run the quicksorting algorithm
-        quicksort(numbers);
+        quicksort(array);
 
         // print out the sorted array
         System.out.print("\nSorted array: ");
-        printArray(numbers);
-
+        ArrayUtils.printArray(array);
     }
 
     // overloaded method. Makes code cleaner, so you only have to pass in the array
@@ -79,14 +69,4 @@ public class QuickSort {
         array[index1] = array[index2];
         array[index2] = temp;
     }
-
-    private void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-    }
-
 }
-
-
-// stack overflow means memory overload.

@@ -1,24 +1,14 @@
-import java.util.Random;
+public class BubbleSort implements SortingAlgorithm {
 
-public class BubbleSort {
-
-    public void run(int size) {
-
-        Random rand = new Random();
-        int[] numbers = new int[size];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(1000);
-        }
-
+    @Override
+    public void sort(int[] array) {
         System.out.println("Before: ");
-        printArray(numbers);
+        ArrayUtils.printArray(array);
 
-        bubbleSort(numbers);
+        bubbleSort(array);
 
         System.out.println("\nAfter: ");
-        printArray(numbers);
-
+        ArrayUtils.printArray(array);
     }
 
     private void bubbleSort(int[] array) {
@@ -38,11 +28,5 @@ public class BubbleSort {
             }
         }
 
-    }
-
-    private void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
     }
 }

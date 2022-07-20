@@ -1,24 +1,14 @@
-import java.util.Random;
+public class MergeSort implements SortingAlgorithm {
 
-public class MergeSort {
-
-    public void run(int size) {
-
-        Random rand = new Random();
-        int[] numbers = new int[size];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(100);
-        }
-
+    @Override
+    public void sort(int[] array) {
         System.out.println("Before: ");
-        printArray(numbers);
+        ArrayUtils.printArray(array);
 
-        mergeSort(numbers);
+        mergeSort(array);
 
         System.out.println("\nAfter: ");
-        printArray(numbers);
-
+        ArrayUtils.printArray(array);
     }
 
     private void mergeSort(int[] inputArray) {
@@ -73,12 +63,6 @@ public class MergeSort {
             inputArray[k] = rightHalf[j];
             j++;
             k++;
-        }
-    }
-
-    private void printArray(int[] array) {
-        for (int j : array) {
-            System.out.print(j + " ");
         }
     }
 }

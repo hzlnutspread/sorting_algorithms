@@ -1,42 +1,18 @@
-import java.util.Random;
+public class BogoSort implements SortingAlgorithm {
 
-public class BogoSort {
 
-    public void run(int size) {
-
-        int[] array = generateArray(size);
-
-        bogoSort(array);
-
-    }
-
-    private int[] generateArray(int size) {
-        Random rand = new Random();
-        int[] array = new int[size];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = rand.nextInt(100);
-        }
-        return array;
-    }
-
-    private void bogoSort(int[] array) {
+    @Override
+    public void sort(int[] array) {
         if (!isListSorted(array)) {
-            int[] newArray = generateArray(array.length);
+            int[] newArray = ArrayUtils.generate(array.length);
             System.out.println("Before: ");
-            printArray(newArray);
+            ArrayUtils.printArray(newArray);
             System.out.println("\n");
-            bogoSort(newArray);
-
-        } else if (isListSorted(array)) {
+            sort(newArray);
+        } else {
             System.out.println("\nAfter: ");
-            printArray(array);
+            ArrayUtils.printArray(array);
             System.out.println("\n" + isListSorted(array));
-        }
-    }
-
-    private void printArray(int[] array) {
-        for (int j : array) {
-            System.out.print(j + " ");
         }
     }
 

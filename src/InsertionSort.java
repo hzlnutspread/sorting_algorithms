@@ -1,31 +1,14 @@
-import java.util.Random;
+public class InsertionSort implements SortingAlgorithm {
 
-public class InsertionSort {
-
-    public void run(int size) {
-
-        Random rand = new Random();
-        int[] numbers = new int[size];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(100);
-        }
-
+    @Override
+    public void sort(int[] array) {
         System.out.println("Before: ");
-        printArray(numbers);
+        ArrayUtils.printArray(array);
 
-        insertionSort(numbers);
+        insertionSort(array);
 
         System.out.println("\nAfter: ");
-        printArray(numbers);
-
-    }
-
-    private void printArray(int[] array) {
-        for (int j : array) {
-            System.out.print(j + " ");
-        }
-
+        ArrayUtils.printArray(array);
     }
 
     private void insertionSort(int[] inputArray) {
